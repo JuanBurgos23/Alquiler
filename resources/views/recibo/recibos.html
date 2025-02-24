@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .recibo {
+            position: relative;
+            width: 800px;
+            height: 470px;
+            /* Ajusta la altura si es necesario */
+            border: 2px solid #000;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .recibo .watermark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/public/cuartos/lgo/logo\ \(2\).png');
+            /* Reemplaza con la ruta de tu imagen */
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* Ajusta la imagen para que se ajuste dentro del contenedor */
+            background-position: center;
+            /* Centra la imagen */
+            opacity: 0.1;
+            /* Ajusta la opacidad según sea necesario */
+            pointer-events: none;
+            /* Asegura que la imagen no interfiera con los clics */
+        }
+
+        .recibo h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 36px;
+            color: #020202;
+            display: inline-block;
+        }
+
+        .recibo .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .recibo .fecha-container {
+            width: 200px;
+        }
+
+        .recibo .fecha-container table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .recibo .fecha-container th,
+        .recibo .fecha-container td {
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .recibo .fecha-container th {
+            background-color: #dcdcdc;
+        }
+
+        .recibo .fecha-container input {
+            border: none;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .recibo .fecha-container input:focus {
+            outline: none;
+        }
+
+        .recibo .empresa-info {
+            text-align: right;
+        }
+
+        .recibo .empresa-info img {
+            width: 100px;
+            height: auto;
+        }
+
+        .recibo .empresa-info .direccion,
+        .recibo .empresa-info .telefono {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .recibo .content {
+            margin-bottom: 20px;
+        }
+
+        .recibo .content div {
+            margin-bottom: 10px;
+        }
+
+        .recibo .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            /* Alinea los elementos al final del contenedor */
+            position: auto;
+            bottom: 20px;
+            width: 100%;
+        }
+
+        .recibo .footer .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* Alinea los elementos a la izquierda */
+        }
+
+        .recibo .footer .footer-left .cuentas {
+            display: flex;
+            flex-direction: row;
+            /* Alinea horizontalmente */
+            justify-content: space-between;
+            /* Espacia los elementos */
+            width: 100%;
+            /* Ajusta el ancho para que los elementos se distribuyan bien */
+        }
+
+        .recibo .footer .footer-left .cuentas div {
+            margin-right: 100px;
+            /* Ajusta el espacio entre los elementos */
+        }
+
+        .recibo .footer .footer-left .entregue-conforme {
+            margin-top: 70px;
+            /* Ajusta el espacio entre los elementos si es necesario */
+        }
+
+        .recibo .footer .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            /* Alinea el texto a la derecha */
+            margin-left: 20px;
+            /* Alinea el contenido a la derecha */
+        }
+
+        .recibo .footer .footer-right .recibi-conforme {
+            margin-top: 0;
+            /* Alineado vertical con "ENTREGUE CONFORME" */
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="recibo">
+        <div class="watermark"></div> <!-- Marca de agua -->
+        <div class="header">
+            <div class="fecha-container">
+                <table>
+                    <tr>
+                        <th>DÍA</th>
+                        <th>MES</th>
+                        <th>AÑO</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="Día"></td>
+                        <td><input type="text" placeholder="Mes"></td>
+                        <td><input type="text" placeholder="Año"></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h1>RECIBO</h1>
+            </div>
+            <div class="empresa-info">
+                <img src="/public/cuartos/lgo/logo (2).png" alt="Logo de la empresa">
+                <p class="direccion">Barrio Urkupiña C/Santa Barbara</p>
+                <p class="telefono">Teléfono: 76095949-78538094</p>
+            </div>
+        </div><br><br>
+        <div class="content">
+            <div>Recibí de: <span class="line"></span></div><br>
+            <div>La suma de: <span class="line"></span></div><br>
+            <div>Por concepto de: <span class="line"></span></div>
+        </div><br><br>
+        <div class="footer">
+            <div class="footer-left">
+                <div class="cuentas">
+                    <div>A cuenta: <span></span></div>
+                    <div>Saldo: <span></span></div>
+                    <div>Total: <span></span></div>
+                </div>
+                <div class="entregue-conforme">ENTREGUE CONFORME</div>
+            </div>
+            <div class="footer-right">
+                <div class="recibi-conforme">RECIBÍ CONFORME</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
