@@ -110,4 +110,29 @@ class ReciboController extends Controller
         // Mostrar la vista previa del PDF en una página web
         return view('pdf.recibo_pdf', compact('recibos', 'dia', 'mes', 'anio'));
     }
+
+    public function actualizarPago(Request $request)
+    {
+        $recibo = ReciboAlquiler::findOrFail($request->id);
+
+        // Sumar el nuevo pago a 'a_cuenta'
+        $recibo->a_cuenta += $request->pago_realizado;
+
+        // Recalcular el saldo pendiente
+        $recibo->debe = $recibo->monto_total - $recibo->a_cuenta;
+
+        // Otros datos opcionales
+        $recibo->metodo_pago = $request->metodo_pago;
+        $recibo->descripcion = $request->descripcion;
+
+        // Si ya no hay deuda, cambiar estado a "Pagado"
+        if ($recibo->debe <= 0) {
+            $recibo->debe = 0; // Evitar valores negativos
+            $recibo->estado = 'Pagado';
+        }
+
+        $recibo->save();
+
+        return redirect()->route('mostrar_recibos')->with('success', 'Pago realizado correctamente');
+    }
 }

@@ -68,13 +68,15 @@ Route::get('/contratos', [ContratoController::class, 'mostrarContratos'])->name(
 Route::get('Contrato/{id}/pdf', [ContratoController::class, 'generarPDF'])->name('contratoPDF.pdf');
 
 
-//recibo
-//inquilino
+//recibo inquilino
 Route::get('/recibo', [ReciboController::class, 'index'])->name('mostrar_recibo');
 Route::post('/recibo-register', [ReciboController::class, 'store'])->name('resgistrar_recibo');
 Route::get('/recibos/edit/{id}', [ReciboController::class, 'edit']);
 Route::put('/recibo-update/{id}', [ReciboController::class, 'update']);
 Route::get('/Recibos', [ReciboController::class, 'mostrarRecibos'])->name('mostrar_recibos');
+//pagar recibo
+Route::post('/actualizar-pago', [ReciboController::class, 'actualizarPago'])->name('actualizar_pago');
+
 
 //hacer recibo para un contrato
 Route::get('/Recibo/{id}/Contrato', [ReciboController::class, 'create'])->name('recibo');

@@ -46,7 +46,9 @@
                                 <p><strong>Descripción:</strong> {{ $recibos->descripcion }}</p>
                                 <p><strong>Metodo de Pago:</strong> {{ $recibos->metodo_pago }}</p>
                                 <p><strong>Estado:</strong> {{ $recibos->estado }}</p>
-                                <p><strong>Monto:</strong> Bs {{ $recibos->monto_total }}</p>
+                                <p><strong>Monto Pagado:</strong> Bs {{ $recibos->a_cuenta }}</p>
+                                <p><strong>Debe:</strong> Bs {{ $recibos->debe }}</p>
+                                <p><strong>Total:</strong> Bs {{ $recibos->monto_total }}</p>
 
                                 <h5 class="card-title">Datos del Inquilino</h5>
                                 <p><strong>Nombre:</strong> {{ $recibos->contrato->inquilino->nombre_completo}}</p>
