@@ -57,7 +57,8 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
                     <a href="{{route('principal')}}" class="logo ">
-                        <img src="{{asset('cuartos/lgo/logo (2).png')}}" alt="navbar brand" class="navbar-brand" height="20" /><p style="color:white">Alquiler</p>
+                        <img src="{{asset('cuartos/lgo/logo (2).png')}}" alt="navbar brand" class="navbar-brand" height="20" />
+                        <p style="color:white">Alquiler</p>
                     </a>
                     <div class="nav-toggle">
                         <button class="btn btn-toggle toggle-sidebar">
@@ -575,10 +576,29 @@
         <!-- Kaiadmin DEMO methods, don't include it in your project! -->
         <script src="{{asset('assets/js/setting-demo.js')}}"></script>
         <script src="{{asset('assets/js/demo.js')}}"></script>
-        @stack('js')
+
         <script>
-            
+            let inactivityTime = 60 * 1000; // 1 minuto en milisegundos
+            let timer;
+
+            function resetTimer() {
+                clearTimeout(timer);
+                timer = setTimeout(lockScreen, inactivityTime);
+            }
+
+            function lockScreen() {
+                window.location.href = "{{ route('lockscreen') }}"; // Redirigir a la pantalla de bloqueo
+            }
+
+            // Detectar actividad del usuario
+            document.addEventListener("mousemove", resetTimer);
+            document.addEventListener("keypress", resetTimer);
+            document.addEventListener("click", resetTimer);
+            document.addEventListener("scroll", resetTimer);
+
+            resetTimer(); // Iniciar el temporizador cuando se carga la página
         </script>
+        @stack('js')
 </body>
 
 <style>
